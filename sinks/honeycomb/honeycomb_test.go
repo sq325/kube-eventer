@@ -20,8 +20,8 @@ import (
 
 	"net/url"
 
-	honeycomb_common "github.com/AliyunContainerService/kube-eventer/common/honeycomb"
-	"github.com/AliyunContainerService/kube-eventer/core"
+	honeycomb_common "github.com/sq325/kube-eventer/common/honeycomb"
+	"github.com/sq325/kube-eventer/core"
 	"github.com/stretchr/testify/assert"
 	kube_api "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

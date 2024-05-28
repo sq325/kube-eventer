@@ -16,16 +16,17 @@ package kafka
 
 import (
 	"encoding/json"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/url"
 	"sync"
 	"time"
 
+	"github.com/sq325/kube-eventer/util"
+
 	"k8s.io/klog"
 
-	kafka_common "github.com/AliyunContainerService/kube-eventer/common/kafka"
-	event_core "github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/metrics/core"
+	kafka_common "github.com/sq325/kube-eventer/common/kafka"
+	event_core "github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/metrics/core"
 	kube_api "k8s.io/api/core/v1"
 )
 

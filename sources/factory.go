@@ -17,9 +17,9 @@ package sources
 import (
 	"fmt"
 
-	"github.com/AliyunContainerService/kube-eventer/common/flags"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	kube "github.com/AliyunContainerService/kube-eventer/sources/kubernetes"
+	"github.com/sq325/kube-eventer/common/flags"
+	"github.com/sq325/kube-eventer/core"
+	kube "github.com/sq325/kube-eventer/sources/kubernetes"
 	"k8s.io/klog"
 )
 

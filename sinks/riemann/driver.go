@@ -15,16 +15,17 @@
 package riemann
 
 import (
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/url"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 
-	riemannCommon "github.com/AliyunContainerService/kube-eventer/common/riemann"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/riemann/riemann-go-client"
+	"github.com/sq325/kube-eventer/util"
+
+	riemanngo "github.com/riemann/riemann-go-client"
+	riemannCommon "github.com/sq325/kube-eventer/common/riemann"
+	"github.com/sq325/kube-eventer/core"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )

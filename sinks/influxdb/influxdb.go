@@ -17,16 +17,17 @@ package influxdb
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/url"
 	"strings"
 	"sync"
 	"time"
 
-	influxdb_common "github.com/AliyunContainerService/kube-eventer/common/influxdb"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	metrics_core "github.com/AliyunContainerService/kube-eventer/metrics/core"
+	"github.com/sq325/kube-eventer/util"
+
 	influxdb "github.com/influxdata/influxdb/client"
+	influxdb_common "github.com/sq325/kube-eventer/common/influxdb"
+	"github.com/sq325/kube-eventer/core"
+	metrics_core "github.com/sq325/kube-eventer/metrics/core"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )

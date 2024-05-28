@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
+	"github.com/sq325/kube-eventer/core"
 )
 
 type DummySink struct {

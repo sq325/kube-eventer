@@ -1,16 +1,17 @@
 package eventbridge
 
 import (
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/sinks/utils"
-	"github.com/alibabacloud-go/eventbridge-sdk/eventbridge"
-	"github.com/stretchr/testify/assert"
-	v1 "k8s.io/api/core/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"net/url"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/alibabacloud-go/eventbridge-sdk/eventbridge"
+	"github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/sinks/utils"
+	"github.com/stretchr/testify/assert"
+	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func TestNewEventBridgeSink(t *testing.T) {

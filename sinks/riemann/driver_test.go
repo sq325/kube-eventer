@@ -19,10 +19,10 @@ import (
 	"testing"
 	"time"
 
-	riemannCommon "github.com/AliyunContainerService/kube-eventer/common/riemann"
-	"github.com/AliyunContainerService/kube-eventer/core"
 	pb "github.com/golang/protobuf/proto"
 	"github.com/riemann/riemann-go-client/proto"
+	riemannCommon "github.com/sq325/kube-eventer/common/riemann"
+	"github.com/sq325/kube-eventer/core"
 	"github.com/stretchr/testify/assert"
 	kube_api "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

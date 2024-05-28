@@ -15,15 +15,16 @@
 package elasticsearch
 
 import (
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/url"
 	"sync"
 	"time"
 
-	esCommon "github.com/AliyunContainerService/kube-eventer/common/elasticsearch"
-	event_core "github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/metrics/core"
+	"github.com/sq325/kube-eventer/util"
+
 	"github.com/prometheus/client_golang/prometheus"
+	esCommon "github.com/sq325/kube-eventer/common/elasticsearch"
+	event_core "github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/metrics/core"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )

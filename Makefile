@@ -11,14 +11,14 @@ VERSION?=v1.2.0
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
 
 
-KUBE_EVENTER_LDFLAGS=-w -X github.com/AliyunContainerService/kube-eventer/version.Version=$(VERSION) -X github.com/AliyunContainerService/kube-eventer/version.GitCommit=$(GIT_COMMIT)
+KUBE_EVENTER_LDFLAGS=-w -X github.com/sq325/kube-eventer/version.Version=$(VERSION) -X github.com/sq325/kube-eventer/version.GitCommit=$(GIT_COMMIT)
 
 fmt:
 	find . -type f -name "*.go" | grep -v "./vendor*" | xargs gofmt -s -w
 
 build: clean
 	go mod tidy & go mod vendor
-	GOARCH=$(ARCH) CGO_ENABLED=0 go build -ldflags "$(KUBE_EVENTER_LDFLAGS)" -o kube-eventer  github.com/AliyunContainerService/kube-eventer
+	GOARCH=$(ARCH) CGO_ENABLED=0 go build -ldflags "$(KUBE_EVENTER_LDFLAGS)" -o kube-eventer  github.com/sq325/kube-eventer
 
 sanitize:
 	hack/check_gofmt.sh

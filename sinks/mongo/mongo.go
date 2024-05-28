@@ -16,15 +16,16 @@ package mongo
 
 import (
 	"context"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/util"
+	"net/url"
+	"sync"
+	"time"
+
+	"github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/util"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	kube_api "k8s.io/api/core/v1"
 	"k8s.io/klog"
-	"net/url"
-	"sync"
-	"time"
 )
 
 type mongoSink struct {

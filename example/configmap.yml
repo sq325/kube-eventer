@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  content: |-
+    {
+      "EventType": "{{ .Type }}", 
+      "EventObjKind": "{{ .InvolvedObject.Kind }}", 
+      "EventObjNamespace": "{{ .InvolvedObject.Namespace }}",
+      "EventObjName": "{{ .InvolvedObject.Name }}",
+      "EventReason": "{{ .Reason }}",
+      "EventFirstTime": "{{ .FirstTimestamp }}",
+      "EventLastTime": "{{ .LastTimestamp }}", 
+      "EventMessage": "{{ .Message }}", 
+      "EventSource": "{{ if .Source.Host }}Host {{ .Source.Host }}, {{ .Source.Component }}{{ else }}{{ .Source.Component }}{{ end }}",
+      "EventCount": "{{ .Count }}", 
+      "Action": "{{ .Action }}", 
+      "Related": "{{ .Related }}", 
+      "ReportingController": "{{ .ReportingController }}",
+      "ReportingInstance": "{{ .ReportingInstance }}"
+    }
+kind: ConfigMap
+metadata: 
+  name: custom-webhook-body
+  namespace: kube-system

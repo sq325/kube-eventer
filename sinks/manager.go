@@ -18,8 +18,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/sq325/kube-eventer/core"
 	"k8s.io/klog"
 )
 

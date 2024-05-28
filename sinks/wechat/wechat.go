@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -26,8 +25,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"k8s.io/api/core/v1"
+	"github.com/sq325/kube-eventer/util"
+
+	"github.com/sq325/kube-eventer/core"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )
 
@@ -58,7 +59,8 @@ var (
 	}
 )
 
-/**
+/*
+*
 wechat msg struct
 */
 type WechatMsg struct {
@@ -80,7 +82,8 @@ type Token struct {
 	ExpiresIn   int    `json:"expires_in"`
 }
 
-/**
+/*
+*
 wechat sink usage
 --sink:wechat:https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=[access_token]&level=Warning&label=[label]
 

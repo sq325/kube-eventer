@@ -16,21 +16,23 @@ package sinks
 
 import (
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/common/flags"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/sinks/dingtalk"
-	"github.com/AliyunContainerService/kube-eventer/sinks/elasticsearch"
-	"github.com/AliyunContainerService/kube-eventer/sinks/eventbridge"
-	"github.com/AliyunContainerService/kube-eventer/sinks/honeycomb"
-	"github.com/AliyunContainerService/kube-eventer/sinks/influxdb"
-	"github.com/AliyunContainerService/kube-eventer/sinks/kafka"
-	"github.com/AliyunContainerService/kube-eventer/sinks/log"
-	"github.com/AliyunContainerService/kube-eventer/sinks/mongo"
-	"github.com/AliyunContainerService/kube-eventer/sinks/mysql"
-	"github.com/AliyunContainerService/kube-eventer/sinks/riemann"
-	"github.com/AliyunContainerService/kube-eventer/sinks/sls"
-	"github.com/AliyunContainerService/kube-eventer/sinks/webhook"
-	"github.com/AliyunContainerService/kube-eventer/sinks/wechat"
+
+	"github.com/sq325/kube-eventer/common/flags"
+	"github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/sinks/dingtalk"
+	"github.com/sq325/kube-eventer/sinks/elasticsearch"
+	"github.com/sq325/kube-eventer/sinks/eventbridge"
+	"github.com/sq325/kube-eventer/sinks/honeycomb"
+	"github.com/sq325/kube-eventer/sinks/influxdb"
+	"github.com/sq325/kube-eventer/sinks/kafka"
+	logsink "github.com/sq325/kube-eventer/sinks/log"
+	"github.com/sq325/kube-eventer/sinks/mongo"
+	"github.com/sq325/kube-eventer/sinks/mysql"
+	"github.com/sq325/kube-eventer/sinks/remotewrite"
+	"github.com/sq325/kube-eventer/sinks/riemann"
+	"github.com/sq325/kube-eventer/sinks/sls"
+	"github.com/sq325/kube-eventer/sinks/webhook"
+	"github.com/sq325/kube-eventer/sinks/wechat"
 	"k8s.io/klog"
 )
 
@@ -65,6 +67,8 @@ func (this *SinkFactory) Build(uri flags.Uri) (core.EventSink, error) {
 		return eventbridge.NewEventBridgeSink(&uri.Val)
 	case "mongo":
 		return mongo.CreateMongoSink(&uri.Val)
+	case "remotewrite":
+		return remotewrite.NewSink(uri.String())
 	default:
 		return nil, fmt.Errorf("Sink not recognized: %s", uri.Key)
 	}

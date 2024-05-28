@@ -19,7 +19,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/manager"
+	"github.com/sq325/kube-eventer/manager"
 	"k8s.io/klog"
 )
 

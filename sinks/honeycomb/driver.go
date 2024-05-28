@@ -15,14 +15,15 @@
 package honeycomb
 
 import (
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/url"
 	"sync"
 
+	"github.com/sq325/kube-eventer/util"
+
 	"k8s.io/klog"
 
-	honeycomb_common "github.com/AliyunContainerService/kube-eventer/common/honeycomb"
-	event_core "github.com/AliyunContainerService/kube-eventer/core"
+	honeycomb_common "github.com/sq325/kube-eventer/common/honeycomb"
+	event_core "github.com/sq325/kube-eventer/core"
 	kube_api "k8s.io/api/core/v1"
 )
 

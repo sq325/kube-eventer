@@ -24,7 +24,7 @@ import (
 	kube_api "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
+	"github.com/sq325/kube-eventer/core"
 )
 
 func TestSimpleWrite(t *testing.T) {

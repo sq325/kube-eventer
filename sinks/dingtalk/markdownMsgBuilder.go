@@ -2,8 +2,9 @@ package dingtalk
 
 import (
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"strings"
+
+	"github.com/sq325/kube-eventer/util"
 
 	v1 "k8s.io/api/core/v1"
 )

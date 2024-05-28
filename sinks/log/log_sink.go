@@ -17,9 +17,10 @@ package logsink
 import (
 	"bytes"
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
+	"github.com/sq325/kube-eventer/util"
+
+	"github.com/sq325/kube-eventer/core"
 	"k8s.io/klog"
 )
 

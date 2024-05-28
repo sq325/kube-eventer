@@ -16,19 +16,20 @@ package sls
 import (
 	"encoding/json"
 	"errors"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	metrics_core "github.com/AliyunContainerService/kube-eventer/metrics/core"
-	"github.com/AliyunContainerService/kube-eventer/sinks/utils"
-	"github.com/AliyunContainerService/kube-eventer/util"
-	"github.com/denverdino/aliyungo/common"
-	"github.com/denverdino/aliyungo/sls"
-	"k8s.io/api/core/v1"
-	"k8s.io/klog"
 	"log"
 	"net/url"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/denverdino/aliyungo/common"
+	"github.com/denverdino/aliyungo/sls"
+	"github.com/sq325/kube-eventer/core"
+	metrics_core "github.com/sq325/kube-eventer/metrics/core"
+	"github.com/sq325/kube-eventer/sinks/utils"
+	"github.com/sq325/kube-eventer/util"
+	v1 "k8s.io/api/core/v1"
+	"k8s.io/klog"
 )
 
 const (

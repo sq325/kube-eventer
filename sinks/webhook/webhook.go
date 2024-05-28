@@ -2,8 +2,8 @@ package webhook
 
 import (
 	"bytes"
+	"context"
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -11,9 +11,11 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/common/filters"
-	"github.com/AliyunContainerService/kube-eventer/common/kubernetes"
-	"github.com/AliyunContainerService/kube-eventer/core"
+	"github.com/sq325/kube-eventer/util"
+
+	"github.com/sq325/kube-eventer/common/filters"
+	"github.com/sq325/kube-eventer/common/kubernetes"
+	"github.com/sq325/kube-eventer/core"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/klog"
@@ -128,7 +130,6 @@ func (ws *WebHookSink) RenderBodyTemplate(event *v1.Event) (body string, err err
 
 func (ws *WebHookSink) Stop() {
 	// not implement
-	return
 }
 
 func getLevels(level string) []string {
@@ -206,7 +207,7 @@ func NewWebHookSink(uri *url.URL) (*WebHookSink, error) {
 			s.bodyTemplate = defaultBodyTemplate
 			return s, nil
 		}
-		configmap, err := client.CoreV1().ConfigMaps(s.bodyConfigMapNamespace).Get(s.bodyConfigMapName, metav1.GetOptions{})
+		configmap, err := client.CoreV1().ConfigMaps(s.bodyConfigMapNamespace).Get(context.Background(), s.bodyConfigMapName, metav1.GetOptions{})
 		if err != nil {
 			klog.Warningf("Failed to get configMap %s in namespace %s and use default bodyTemplate instead,because of %v", s.bodyConfigMapName, s.bodyConfigMapNamespace, err)
 			s.bodyTemplate = defaultBodyTemplate

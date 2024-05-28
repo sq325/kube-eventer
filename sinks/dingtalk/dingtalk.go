@@ -21,14 +21,15 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/AliyunContainerService/kube-eventer/util"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"k8s.io/api/core/v1"
+	"github.com/sq325/kube-eventer/util"
+
+	"github.com/sq325/kube-eventer/core"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/klog"
 )
 

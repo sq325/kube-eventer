@@ -16,13 +16,14 @@ package mysql
 
 import (
 	"encoding/json"
-	mysql_common "github.com/AliyunContainerService/kube-eventer/common/mysql"
-	"github.com/AliyunContainerService/kube-eventer/core"
-	"github.com/AliyunContainerService/kube-eventer/util"
-	kube_api "k8s.io/api/core/v1"
-	"k8s.io/klog"
 	"net/url"
 	"sync"
+
+	mysql_common "github.com/sq325/kube-eventer/common/mysql"
+	"github.com/sq325/kube-eventer/core"
+	"github.com/sq325/kube-eventer/util"
+	kube_api "k8s.io/api/core/v1"
+	"k8s.io/klog"
 )
 
 // SaveDataFunc is a pluggable function to enforce limits on the object

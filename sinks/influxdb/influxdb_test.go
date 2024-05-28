@@ -21,8 +21,8 @@ import (
 	"net/http/httptest"
 	"net/url"
 
-	influxdb_common "github.com/AliyunContainerService/kube-eventer/common/influxdb"
-	"github.com/AliyunContainerService/kube-eventer/core"
+	influxdb_common "github.com/sq325/kube-eventer/common/influxdb"
+	"github.com/sq325/kube-eventer/core"
 	"github.com/stretchr/testify/assert"
 	kube_api "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
