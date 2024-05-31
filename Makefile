@@ -1,17 +1,17 @@
 all: build
 
-PREFIX?=registry.aliyuncs.com/acs
+# PREFIX?=registry.aliyuncs.com/acs
 FLAGS=
-ARCH?=amd64
+ARCH?=arm64
 ALL_ARCHITECTURES=amd64 arm arm64 ppc64le s390x
 ML_PLATFORMS=linux/amd64,linux/arm,linux/arm64,linux/ppc64le,linux/s390x
 
 
-VERSION?=v1.2.0
+VERSION?=v1.3.0
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
 
 
-KUBE_EVENTER_LDFLAGS=-w -X github.com/sq325/kube-eventer/version.Version=$(VERSION) -X github.com/sq325/kube-eventer/version.GitCommit=$(GIT_COMMIT)
+KUBE_EVENTER_LDFLAGS=-w -X github.com/sq325/kube-eventer/version.Version=$(VERSION) -X github.com/sq325/kube-eventer/version.GitCommit=$(GIT_COMMIT) -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn
 
 fmt:
 	find . -type f -name "*.go" | grep -v "./vendor*" | xargs gofmt -s -w
@@ -36,7 +36,7 @@ test-unit-cov: clean sanitize build
 	hack/coverage.sh
 
 docker-container:
-	docker build --pull -t $(PREFIX)/kube-eventer-$(ARCH):$(VERSION)-$(GIT_COMMIT)-aliyun -f deploy/Dockerfile .
+	docker build -t kube-eventer-$(ARCH):$(VERSION) -f deploy/Dockerfile.self .
 
 clean:
 	rm -f kube-eventer

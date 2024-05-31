@@ -1,8 +1,6 @@
 module github.com/sq325/kube-eventer
 
-go 1.21
-
-toolchain go1.22.1
+go 1.22.1
 
 require (
 	github.com/Shopify/sarama v1.22.1

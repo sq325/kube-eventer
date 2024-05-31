@@ -1,6 +1,8 @@
 package remotewrite
 
 import (
+	"time"
+
 	"github.com/sq325/kube-eventer/common/remotewrite/prompb"
 	v1 "k8s.io/api/core/v1"
 )
@@ -27,7 +29,7 @@ func (f *factory) EventToMetric(event *v1.Event) *prompb.TimeSeries {
 	var (
 		labels    []*prompb.Label
 		count     float64 = float64(event.Count)
-		timestamp int64   = event.LastTimestamp.Time.UnixMilli()
+		timestamp int64   = time.Now().UnixMilli()
 	)
 	if event.Type == "Warning" {
 		labels = append(labels, &prompb.Label{Name: "__name__", Value: f.WarningM})
