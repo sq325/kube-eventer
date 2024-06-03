@@ -8,7 +8,7 @@ import (
 )
 
 type MetricFactory interface {
-	EventToMetric(event *v1.Event) *prompb.TimeSeries
+	EventToMetric(event *v1.Event, cluster string) *prompb.TimeSeries
 }
 
 type factory struct {
@@ -21,11 +21,11 @@ func NewMetricFactory() MetricFactory {
 	return &factory{
 		WarningM:  "event_warning_total",
 		NormalM:   "event_normal_total",
-		Labelkeys: []string{"namespace", "type", "name", "reason", "message"},
+		Labelkeys: []string{"namespace", "type", "name", "reason", "message", "cluster"},
 	}
 }
 
-func (f *factory) EventToMetric(event *v1.Event) *prompb.TimeSeries {
+func (f *factory) EventToMetric(event *v1.Event, cluster string) *prompb.TimeSeries {
 	var (
 		labels    []*prompb.Label
 		count     float64 = float64(event.Count)
@@ -50,6 +50,8 @@ func (f *factory) EventToMetric(event *v1.Event) *prompb.TimeSeries {
 			value = event.Reason
 		case "message":
 			value = event.Message
+		case "cluster":
+			value = cluster
 		}
 		labels = append(labels, &prompb.Label{Name: key, Value: value})
 	}

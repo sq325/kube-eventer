@@ -68,7 +68,7 @@ func (this *SinkFactory) Build(uri flags.Uri) (core.EventSink, error) {
 	case "mongo":
 		return mongo.CreateMongoSink(&uri.Val)
 	case "remotewrite":
-		return remotewrite.NewSink(uri.Val.String())
+		return remotewrite.NewSink(&uri.Val)
 	default:
 		return nil, fmt.Errorf("Sink not recognized: %s", uri.Key)
 	}

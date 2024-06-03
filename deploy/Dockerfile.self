@@ -8,7 +8,7 @@ RUN apt-get update -y && apt-get install gcc ca-certificates
 RUN make
 
 
-FROM alpine:latest
+FROM --platform=linux/amd64 alpine:latest
 
 RUN apk --no-cache --update upgrade
 

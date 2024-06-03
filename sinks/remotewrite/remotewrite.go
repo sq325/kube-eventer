@@ -1,6 +1,9 @@
 package remotewrite
 
 import (
+	"log"
+	"net/url"
+
 	rwClient "github.com/sq325/kube-eventer/common/remotewrite"
 	"github.com/sq325/kube-eventer/common/remotewrite/prompb"
 	"github.com/sq325/kube-eventer/core"
@@ -12,12 +15,18 @@ import (
 type remotewriteSink struct {
 	client  rwClient.RemoteWriteClient
 	factory MetricFactory
+	cluster string
 }
 
-func NewSink(url string) (core.EventSink, error) {
+func NewSink(uri *url.URL) (core.EventSink, error) {
+	remotewriteUrl := uri.Scheme + "://" + uri.Host + uri.Path
+	cluster := uri.Query().Get("cluster")
+	log.Println("remote write url: ", remotewriteUrl)
+	log.Println("cluster name: ", cluster)
 	return &remotewriteSink{
-		client:  rwClient.NewClient(url),
+		client:  rwClient.NewClient(remotewriteUrl),
 		factory: NewMetricFactory(),
+		cluster: cluster,
 	}, nil
 }
 
@@ -38,7 +47,7 @@ func (sink *remotewriteSink) Stop() {
 func (sink *remotewriteSink) write(events []*v1.Event) (err error) {
 	var seriesList []*prompb.TimeSeries
 	for _, event := range events {
-		seriesList = append(seriesList, sink.factory.EventToMetric(event))
+		seriesList = append(seriesList, sink.factory.EventToMetric(event, sink.cluster))
 	}
 	return sink.client.Write(seriesList)
 }

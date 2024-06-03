@@ -32,6 +32,7 @@ type mongoSink struct {
 	client  *mongo.Client
 	closeDB func()
 	sync.RWMutex
+	cluster string
 }
 
 type mongoSinkPoint struct {
@@ -52,7 +53,7 @@ func (m *mongoSink) Name() string {
 }
 
 func (m *mongoSink) saveData(sinkData *mongoSinkPoint) error {
-	eventCollection := m.client.Database("k8s").Collection("event")
+	eventCollection := m.client.Database(m.cluster).Collection("event")
 
 	ctx := context.TODO()
 	_, err := eventCollection.InsertOne(ctx, sinkData)
@@ -117,6 +118,7 @@ func (m *mongoSink) Stop() {
 
 func CreateMongoSink(uri *url.URL) (core.EventSink, error) {
 	var sink mongoSink
+	sink.cluster = uri.Query().Get("cluster")
 
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 

@@ -2,12 +2,12 @@ all: build
 
 # PREFIX?=registry.aliyuncs.com/acs
 FLAGS=
-ARCH?=arm64
+ARCH?=amd64
 ALL_ARCHITECTURES=amd64 arm arm64 ppc64le s390x
 ML_PLATFORMS=linux/amd64,linux/arm,linux/arm64,linux/ppc64le,linux/s390x
 
 
-VERSION?=v1.3.0
+VERSION?=v1.3.1
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
 
 
